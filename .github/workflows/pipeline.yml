@@ -28,9 +28,9 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5000
       - name: deploy to heroku
-        - uses: actions/checkout@v2
-        - uses: akhileshns/heroku-deploy@v3.8.9
-          with:
+        uses: actions/checkout@v2
+        uses: akhileshns/heroku-deploy@v3.8.9
+        with:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
             heroku_app_name: "pokedex-full-stack"
             heroku_email: "jonashorvei1@gmail.com"
