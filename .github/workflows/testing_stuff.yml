@@ -19,10 +19,12 @@ jobs:
           COMMITS: ${{ toJson(github.event.commits) }}
           STUFF: ${{ toJson(join(github.event.commits.*.message))}}
           CONTAINS: ${{ !contains(join(github.event.commit.*.message), '#skip') }}
+          DOES_NOT_CONTAIN:  ${{ contains(join(github.event.commit.*.message), '#skip') }}
         run: |
           echo "$COMMITS"
           echo "$STUFF"
-          echo "CONTAINS"
+          echo "$CONTAINS"
+          echo "$DOES_NOT_CONTAIN"
       - name: commit messages
         if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
         env:
